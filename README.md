@@ -29,7 +29,7 @@ AWS_STORAGE_BUCKET_NAME=<THE_BUCKET_SPECIFIC_FOR_THIS_ENVIRONMENT>
 AWS_STORAGE_ALTERNATE_BUCKET_NAME=<THE_PRODUCTION_OR_FALLBACK_BUCKET>
 ```
 
-Then, please follow the original [tutorial](https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/) to
+Then please follow the original [tutorial](https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/) to
 find out how to build and run.
 
 # Main changes
