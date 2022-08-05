@@ -10,7 +10,7 @@ environment (testing, dev, staging) is configured to write and read from its own
 environment needs a resource that is not located in its own bucket, then it automatically tries to fetch it from the
 production bucket.
 
-The simple solution proposed could be used in any situation in which we want to allow a system to partially overwrite 
+The simple solution proposed could be used in any situations in which we want to allow a system to partially overwrite 
 resources found in an original S3 repository without actually modifying the original resources.  Please note that the
 custom storage class can be easily adapted for the other backends that are supported by [django-storages](https://github.com/jschneier/django-storages)
 
