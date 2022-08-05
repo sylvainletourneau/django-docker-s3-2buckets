@@ -1,6 +1,6 @@
 # Storing Django Static and Media Files on Amazon S3 with sharing of a production bucket with dev and staging environments 
 
-Inspired by a [great tutorial on using S3 with Django](https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/), this project shows how to
+Building on a great [tutorial on using S3 with Django](https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/), this project shows how to
 write a custom storage class that supports two S3 buckets.
 
 # Use cases
