@@ -1,4 +1,3 @@
-import pprint
 from datetime import datetime, timedelta
 from urllib.parse import urlencode
 
@@ -24,18 +23,13 @@ class StaticStorage(S3Boto3Storage):
         return settings_dict
 
     def url(self, name, parameters=None, expire=None, http_method=None):
-        print("In url(): name=%s, parameters=%s, expire=%s, http_method=%s, self.custom_domain=%s" %
-              (name, pprint.pformat(parameters), str(expire), http_method, self.custom_domain))
         params = parameters.copy() if parameters else {}
         if self.exists(name):
-            print("  Exists!")
             r = self._url(name, parameters=params, expire=expire, http_method=http_method)
         else:
-            print("  Does not exist!")
             if self.alternate_bucket_name:
                 params['Bucket'] = self.alternate_bucket_name
                 r = self._url(name, parameters=params, expire=expire, http_method=http_method)
-        print(f"  r={r}")
         return r
 
     def _url(self, name, parameters=None, expire=None, http_method=None):
