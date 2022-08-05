@@ -21,7 +21,7 @@ Get the repository using
 git clone https://github.com/sylvainletourneau/django-docker-s3-2buckets.git
 ```
 
-Update the file ```aws-variables.env``` 
+Update the file `aws-variables.env`
 ```
 AWS_ACCESS_KEY_ID=<YOUR_AWS_ACCESS_KEY_ID>
 AWS_SECRET_ACCESS_KEY=<YOUR_AWS_SECRET_ACCESS_KEY>
@@ -40,4 +40,4 @@ AWS_STORAGE_ALTERNATE_BUCKET_NAME = os.getenv('AWS_STORAGE_ALTERNATE_BUCKET_NAME
 AWS_S3_ALTERNATE_CUSTOM_DOMAIN = f'{AWS_STORAGE_ALTERNATE_BUCKET_NAME}.s3.amazonaws.com'
 ```
 
-The part that takes care of the fallback mechanism is located in `storage_backends.py` 
+The part that takes care of the fallback mechanism is located in [storage_backends.py](https://github.com/sylvainletourneau/django-docker-s3-2buckets/blob/master/app/hello_django/storage_backends.py) 
