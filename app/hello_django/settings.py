@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -130,7 +130,7 @@ if USE_S3:
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-    AWS_DEFAULT_ACL = None
+    AWS_DEFAULT_ACL = 'public-read'
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     # s3 static settings
@@ -141,13 +141,18 @@ if USE_S3:
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
     DEFAULT_FILE_STORAGE = 'hello_django.storage_backends.PublicMediaStorage'
-    # s3 private media settings
-    PRIVATE_MEDIA_LOCATION = 'private'
-    PRIVATE_FILE_STORAGE = 'hello_django.storage_backends.PrivateMediaStorage'
+
+    # The alternate bucket is used as a fallback when the primary one doesn't contain the resources requested.
+    AWS_STORAGE_ALTERNATE_BUCKET_NAME = os.getenv('AWS_STORAGE_ALTERNATE_BUCKET_NAME')
+    AWS_S3_ALTERNATE_CUSTOM_DOMAIN = f'{AWS_STORAGE_ALTERNATE_BUCKET_NAME}.s3.amazonaws.com'
+
 else:
     STATIC_URL = '/staticfiles/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     MEDIA_URL = '/mediafiles/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
+    STORAGE_ALTERNATE_BUCKET_NAME = None
+
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
