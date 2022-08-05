@@ -34,7 +34,7 @@ find out how to build and run.
 
 # Main changes
 
-This fork adds the following two variables in settings.py
+This fork adds the following two variables in `settings.py`
 ```
 AWS_STORAGE_ALTERNATE_BUCKET_NAME = os.getenv('AWS_STORAGE_ALTERNATE_BUCKET_NAME')
 AWS_S3_ALTERNATE_CUSTOM_DOMAIN = f'{AWS_STORAGE_ALTERNATE_BUCKET_NAME}.s3.amazonaws.com'
